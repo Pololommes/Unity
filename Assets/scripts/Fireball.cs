@@ -1,11 +1,29 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Fireball : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    private Animator animator; // Reference to the Animator component
+                               // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private SpriteRenderer sR;
     void Start()
     {
-       
+        // sR = GetComponent<SpriteRenderer>();
+        // animator = GetComponent<Animator>();
+        // // Set the fireball to be destroyed after 2 seconds
+        // Destroy(gameObject, 5);
+        // // animator.SetInteger("type", 1); // Set the animation type to 1
+        // int r = Random.Range(0, 3); // Randomly select an animation type
+        // animator.SetInteger("type", r); // Set the animation type to the random value
+
+        // sR.flipX = false; // Flip the sprite to face right
+        // if (transform.position.x < 0)
+        // {
+        //     sR.flipX = true; // Flip the sprite to face left
+        // }
+        // transform.localScale = new Vector3(-1, 1, 1); // Scale the fireball to half its size
+
     }
 
     // Update is called once per frame
@@ -18,6 +36,26 @@ public class Fireball : MonoBehaviour
         Destroy(collision.gameObject);
         Destroy(gameObject); // Destroy the fireball on collision
         Debug.Log("Fireball hit: " + collision.gameObject.name); // Log the name of the object hit  
-        
+
     }
+
+    void DestroyafterTime()
+    {
+        float timer = 5f; // Set a timer for 5 seconds
+        if (timer <= 0) // Check if the timer has reached zero
+        {
+            Destroy(gameObject); // Destroy the fireball after a certain time
+
+            timer = 5f; // Reset the timer
+        }
+
+
+            
+        
+        
+
+    }
+    
+
+    
 }
