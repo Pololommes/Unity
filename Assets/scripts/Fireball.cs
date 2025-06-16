@@ -30,6 +30,7 @@ public class Fireball : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector3.left * Time.deltaTime * 2f); // Move the fireball forward at a speed of 5 units per second
+        DestroyafterTime();
     }
     void OnCollisionEnter2D(Collision2D collision)
     {

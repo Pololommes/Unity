@@ -52,6 +52,8 @@ public class Wizard : MonoBehaviour
         {
 
             movement += Vector3.left;
+            GetComponent<SpriteRenderer>().flipX = false; // Flip the sprite to face left
+          
 
         }
 
@@ -60,6 +62,8 @@ public class Wizard : MonoBehaviour
         {
 
             movement += Vector3.right;
+            GetComponent<SpriteRenderer>().flipX = true; // Flip the sprite to face right
+           
 
         }
 
@@ -111,8 +115,8 @@ public class Wizard : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            Cooldown();
-
+            
+            
             Vector3 position = transform.position + new Vector3(0.9f, 0.8f, 0);
 
             GameObject obj = Instantiate(FireballPrefab, position, Quaternion.identity);
@@ -148,16 +152,23 @@ public class Wizard : MonoBehaviour
         // }
 
     }
-   
-   private void Cooldown()
+
+    private void Cooldown()
     {
-       if (GetComponent<Animator>().GetBool("shooting") == true)
+        if (GetComponent<Animator>().GetBool("shooting") == true)
         {
             GetComponent<Animator>().SetBool("shooting", false);
         }
         else
         {
             GetComponent<Animator>().SetBool("shooting", true);
+        }
+
+        while (GetComponent<Animator>().GetBool("shooting") == true)
+        {
+            Casting();
+            // Wait for a certain time before allowing another cast
+            System.Threading.Thread.Sleep(1000); // Wait for 1 second (1000 milliseconds)
         }
     }
     
