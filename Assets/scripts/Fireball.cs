@@ -29,8 +29,8 @@ public class Fireball : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.left * Time.deltaTime * 2f); // Move the fireball forward at a speed of 5 units per second
-        DestroyafterTime();
+        transform.Translate(Vector3.left * Time.deltaTime * 5f); // Move the fireball forward at a speed of 5 units per second
+        Destroy(gameObject, 5f); // Destroy the fireball after 5 seconds
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -40,16 +40,7 @@ public class Fireball : MonoBehaviour
 
     }
 
-    void DestroyafterTime()
-    {
-        float timer = 5f; // Set a timer for 5 seconds
-        if (timer <= 0) // Check if the timer has reached zero
-        {
-            Destroy(gameObject); // Destroy the fireball after a certain time
-
-            timer = 5f; // Reset the timer
-        }
-
+   
 
             
         
@@ -59,4 +50,4 @@ public class Fireball : MonoBehaviour
     
 
     
-}
+

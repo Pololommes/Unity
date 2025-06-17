@@ -1,10 +1,12 @@
 using System.Collections;
 
 using System.Collections.Generic;
+
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Categorization;
 using UnityEngine.Rendering;
+
 
 public class Wizard : MonoBehaviour
 
@@ -13,6 +15,8 @@ public class Wizard : MonoBehaviour
     private Animator animator; // Reference to the Animator component
     private SpriteRenderer sR;
     public GameObject FireballPrefab;
+    private float castingCooldown = 0f; // Cooldown timer for casting
+    
 
     void Update()
 
@@ -113,9 +117,9 @@ public class Wizard : MonoBehaviour
 
     {
 
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0) )
         {
-            
+             castingCooldown = 1f; // Set the cooldown time to 1 second
             
             Vector3 position = transform.position + new Vector3(0.9f, 0.8f, 0);
 
